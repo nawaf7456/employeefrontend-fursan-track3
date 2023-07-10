@@ -13,3 +13,14 @@ jobs:
 
       - name: Build Step 2
         run: echo "Bulid Step 2"
+
+
+  
+  Test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test Step 1
+        run: echo "Test Step 1"
+        
+      - name: Test Step 2
+        run: echo "Test Step 2"
