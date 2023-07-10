@@ -5,53 +5,28 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-job:
+  sonarcloud-scan:
     runs-on: ubuntu-latest
     steps:
-      - name: Build Step 1
-        run: echo "Bulid Step 1"
+      - name: Step 1 Download the source code
+        uses: actions/checkout@v3.5.3
 
-      - name: Build Step 2
-        run: echo "Bulid Step 2"
+      - name: Setup 2 install Node.js
+        uses: actions/setup-node@v3.7.0
+        with:
+          node-version: '18.16.1'
+      - name: step 3 install Dependencies
+        run: npm install 
 
-
-
-  Test-job:
-    runs-on: ubuntu-latest
-    needs: build-job
-    steps:
-      - name: Test Step 1
-        run: echo "Test Step 1"
-        
-      - name: Test Step 2
-        run: echo "Test Step 2"
-
-  Provision-job:
-    runs-on: ubuntu-latest
-    needs: Test-job
-    steps:
-      - name: Provision Step 1
-        run: echo "Provision Step 1"
-              
-      - name: Provision Step 2
-        run: echo "Provision Step 2"
-
-  Deploy-job:
-    runs-on: ubuntu-latest
-    needs: Provision-job
-    steps:
-      - name: Deploy Step 1
-        run: echo "Deploy Step 1"
-                    
-      - name: Deploy Step 2
-        run: echo "Deploy Step 2"
-
-  Monitor-job:
-    runs-on: ubuntu-latest
-    needs: Deploy-job
-    steps:
-      - name: Monitor Step 1
-        run: echo "Monitor Step 1"
-                          
-      - name: Monitor Step 2
-        run: echo "Monitor Step 2"
+      - name: step 4 SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN:  ${{secrets.SONAR_TOKEN}}
+        with:
+          projectBaseDir: my-custom-directory
+          args: >
+            -Dsonar.organization=nawaf7456 \
+            -Dsonar.projectKey=nawaf7456_employeefrontend-fursan-track3 \
+            -Dsonar.sources=. \
+            -Dsonar.host.url=https://sonarcloud.io
