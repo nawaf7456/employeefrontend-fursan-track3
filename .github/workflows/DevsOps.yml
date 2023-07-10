@@ -24,9 +24,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN:  ${{secrets.SONAR_TOKEN}}
         with:
-          projectBaseDir: my-custom-directory
           args: >
-            -Dsonar.organization=nawaf7456 \
-            -Dsonar.projectKey=nawaf7456_employeefrontend-fursan-track3 \
-            -Dsonar.sources=. \
+            -Dsonar.organization=nawaf7456 
+            -Dsonar.projectKey=nawaf7456_employeefrontend-fursan-track3 
+            -Dsonar.sources=. 
             -Dsonar.host.url=https://sonarcloud.io
