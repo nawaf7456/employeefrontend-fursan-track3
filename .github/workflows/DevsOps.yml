@@ -24,3 +24,30 @@ jobs:
         
       - name: Test Step 2
         run: echo "Test Step 2"
+
+  Provision-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Provision Step 1
+        run: echo "Provision Step 1"
+              
+      - name: Provision Step 2
+        run: echo "Provision Step 2"
+
+  Deploy-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Step 1
+        run: echo "Deploy Step 1"
+                    
+      - name: Deploy Step 2
+        run: echo "Deploy Step 2"
+
+  Monitor-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Monitor Step 1
+        run: echo "Monitor Step 1"
+                          
+      - name: Monitor Step 2
+        run: echo "Monitor Step 2"
