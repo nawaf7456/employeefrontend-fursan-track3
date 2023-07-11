@@ -58,6 +58,15 @@ jobs:
           name: npm-audit-result
           path: npm-audit-result.json
 
+  retire-scan:
+    runs-on: ubuntu-latest
+    name: retire-scan
+    steps:
+      - name: step 1 donload the source code
+        run: npm install -g retire
+      - name: step 2
+        run: npm install grunt-retire --save-dev
+
 
           
 
