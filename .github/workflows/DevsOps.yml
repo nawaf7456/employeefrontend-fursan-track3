@@ -51,7 +51,7 @@ jobs:
         run: npm audit --json > npm-audit-result.json
 
       - name: step 5 upload npm audit scan report to github
-        uses: actions.upload-artifact@v3
+        uses: actions/upload-artifact@v3
         continue-on-error: true
         with:
           name: npm-audit-result
