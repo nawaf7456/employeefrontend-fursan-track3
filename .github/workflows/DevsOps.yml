@@ -35,14 +35,29 @@ jobs:
     runs-on: ubuntu-latest
     name: NPM Audit
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: NPM Audit
-        uses: luisfontes19/npm-audit-action@v0.1.0
-      - name: NPM Audit Report
-        uses: wx-jayesh/actions-npm-audit-comment@v1.0.0
+      - name: step 1 download the source code
+        uses: actions/checkout@v3.5.3
+
+      - name: step 2 install Node.js
+        uses: actions/setup-node@v3.7.0
+      
         with:
-          github-token: ${{ secrets.MY_TOKEN }} 
+          node-version: '18.16.1'
+
+      - name: step 3 install dependencies
+        run: npm install
+
+      - name: step 4 npm audit scan 
+        run: npm audit --json > npm-audit-result.json
+
+      - name: step 5 upload npm audit scan report to github
+        uses: actions.upload-artifact@3
+        with:
+          name: npm-audit-result
+          path: npm-audit-result.json
+
+
+          
 
 
 
