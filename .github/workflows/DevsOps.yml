@@ -46,7 +46,7 @@ jobs:
 
       - name: step 3 install dependencies
         run: npm install
-
+        
       - name: step 4 npm audit scan 
         run: npm audit --json > npm-audit-result.json
 
